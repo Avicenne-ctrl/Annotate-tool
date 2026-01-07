@@ -1,0 +1,27 @@
+# Environnements virtuels
+.venv/
+venv/
+
+# Dossiers temporaires / runtime
+temp/
+output/
+__pycache__/
+*.pyc
+
+# Outils / internes
+supervisor/
+AnnotateUtils/
+
+# Notebooks
+*.ipynb
+
+# Git
+.git/
+.gitignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
