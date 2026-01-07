@@ -1,4 +1,18 @@
+# Environnements virtuels
 .venv/
+venv/
+
+# Dossiers temporaires / runtime
+temp/
+output/
 __pycache__/
 *.pyc
-.env
+
+# Outils / internes
+supervisor/
+AnnotateUtils/
+
+# Notebooks
+*.ipynb
+
+.dockerignore
