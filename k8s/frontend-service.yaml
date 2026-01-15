@@ -7,5 +7,5 @@ spec:
   selector:
     app: frontend
   ports:
-  - pprotocol: TCP
-    port: 8501
+  - port: 8501
+    targetPort: 8501
