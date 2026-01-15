@@ -17,4 +17,5 @@ if st.button("Get name:"):
         resp = requests.get(configuration.backend_url)
         st.success(f"{resp.json()}")
     else:
-        st.warn
+        st.warning("Merci d'entrer un nom")
+            
