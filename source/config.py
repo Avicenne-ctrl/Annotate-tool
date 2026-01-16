@@ -4,7 +4,7 @@ class LocalConfig:
     backend_url: str = "http://127.0.0.1:8000/users/"
     
 class DevConfig(LocalConfig):
-    backend_url: str = "http://127.0.0.1:8000/users/"
+    backend_url: str = "http://backend:5000/users/"
     
     
 def get_config():
