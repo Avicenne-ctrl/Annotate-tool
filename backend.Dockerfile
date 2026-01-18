@@ -1,4 +1,4 @@
-FROM alpine:3.23
+FROM python:3.12-slim
 
 WORKDIR /source
 COPY . ./
