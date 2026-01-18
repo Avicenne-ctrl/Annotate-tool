@@ -1,7 +1,4 @@
 fastapi[all]
 streamlit
-python-docx  
-docxcompose          
-langgraph 
-langchain 
-langchain-ollama 
+spire.doc
+mistralai
