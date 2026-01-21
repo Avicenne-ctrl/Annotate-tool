@@ -41,18 +41,4 @@ if st.button("Start processing"):
                 with open(commented_path, "rb") as f:
                     commented_file = f.read()
                     
-                st.download_button('Download Commented Docx', commented_file, file_name=f'commented_{file_name}.docx')
-                os.remove(commented_path)
-            
-            else:
-                print(resp)
-                print(resp.json())
-
-                st.warning("Isuue during file processing")
-        
-        except Exception as e:
-            print(f"[App] error: {str(e)}")
-        
-else:
-    st.warning("Complete your request")
-            
+                st.download_button('Download Commented Docx', commented_file, 
