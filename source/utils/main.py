@@ -29,10 +29,14 @@ def main(file_bytes: bytes, file_name: str, query: str):
             
             mistral_resp = call_mistral_agent(user_query)
             main_annotator(doc, mistral_resp)
-        
+            
         os.remove(file_name)
-        # Save the document
+        commented_path = f"temp/commented_{file_name}"
+        doc.SaveToFile(commented_path)
         doc.Close()
+        
+        return commented_path
         
     except Exception as e:
         logging.error(f"[Main workflow] Issue occurs: {str(e)}")
+        return None

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class RequestModel(BaseModel):
-    file_bytes: bytes
+class request_model(BaseModel):
+    user_query: str
     file_name: str
-    query: str
+    files: str
