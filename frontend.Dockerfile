@@ -1,4 +1,4 @@
-FROM python:3.10.4 as build
+FROM python:3.12-slim
 
 ENV ENVIRONMENT="dev"
 WORKDIR /app

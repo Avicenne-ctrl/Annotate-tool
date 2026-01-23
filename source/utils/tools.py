@@ -115,10 +115,3 @@ def main_annotator(doc, agent_comments: dict):
     if para is not None:
       add_comment(doc, para, content, id_comment)
     
-    else:
-      logging.info(f"[Annotator tool] paragraph {para_n} not found for section {sec_n}")
-
-
-  
-  
-
