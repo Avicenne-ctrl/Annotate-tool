@@ -66,22 +66,25 @@ def add_comment(doc, paragraph, comments: str, id_comments: int, author: str = "
     None
   
   """
-  
-  # Add a comment to the paragraph
-  comment = paragraph.AppendComment(comments)
+  try:
+    # Add a comment to the paragraph
+    comment = paragraph.AppendComment(comments)
 
-  # Set the author of the comment
-  comment.Format.Author = author
+    # Set the author of the comment
+    comment.Format.Author = author
 
-  # Create a comment start mark and an end mark and set them as the start and end marks of the created comment
-  commentStart = CommentMark(doc, CommentMarkType.CommentStart)
-  commentEnd = CommentMark(doc, CommentMarkType.CommentEnd)
-  commentStart.CommentId = comment.Format.CommentId
-  commentEnd.CommentId = comment.Format.CommentId
+    # Create a comment start mark and an end mark and set them as the start and end marks of the created comment
+    commentStart = CommentMark(doc, CommentMarkType.CommentStart)
+    commentEnd = CommentMark(doc, CommentMarkType.CommentEnd)
+    commentStart.CommentId = comment.Format.CommentId
+    commentEnd.CommentId = comment.Format.CommentId
 
-  # Insert the comment start mark and end mark at the beginning and end of the paragraph respectively
-  paragraph.ChildObjects.Insert(id_comments, commentStart)
-  paragraph.ChildObjects.Add(commentEnd)
+    # Insert the comment start mark and end mark at the beginning and end of the paragraph respectively
+    paragraph.ChildObjects.Insert(id_comments, commentStart)
+    paragraph.ChildObjects.Add(commentEnd)
+    
+  except Exception as e:
+    print(f"[Tools] issue while adding comments")
 
 
 def save_file(file_bytes: bytes, temp_file_name: str) -> str:

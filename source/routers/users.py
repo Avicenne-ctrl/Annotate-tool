@@ -1,12 +1,10 @@
 from fastapi import APIRouter
-from typing import Annotated
-from fastapi import UploadFile, File, Depends
-from pydantic import Field, BaseModel
 
 import logging
 import json
 
-from source.utils.main import main
+from source.utils.agent import call_mistral_agent
+from source.utils.prompt import user_prompt
 from source.model.router import request_model
 
 router = APIRouter()
@@ -21,12 +19,13 @@ def read_users(item: request_model):
         print(type(resp_json))
         
         user_query = resp_json["user_query"]
-        file_name = resp_json["file_name"]
-        files = resp_json["files"]
+        file_content = resp_json["file_content"]
     
-        file_commented = main(files, file_name, user_query)
+        user_prompt = user_prompt(user_query, file_content)
+        mistral_analysis = call_mistral_agent(user_prompt)
                 
-        return file_commented
+        return mistral_analysis
     
     except Exception as e:
         logging.error(f"[User Router] error: {str(e)}")
+        return {}
