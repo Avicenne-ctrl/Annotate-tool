@@ -46,4 +46,28 @@ if st.button("Start processing"):
                                 timeout=600,
                                 )
         print(f"[APP] API response: {resp.json()}")
-   
+        
+        if resp.status_code == 200:
+            
+            mistral_analysis = resp.json()
+            main_annotator(doc, mistral_analysis)
+            doc.SaveToFile(temp_file_name)
+            commented_path = resp.json()
+            
+            with open(temp_file_name, "rb") as f:
+                st.download_button(label= 'Download Commented Docx', 
+                                    data= f.read(),
+                                    file_name= temp_file_name
+                                    )
+
+        else:
+            st.warning(f"[APP] Isuue during file processing: {resp}")
+            
+        if os.path.exists(temp_file_name):
+            os.remove(temp_file_name)
+        os.remove(path_temp_file)
+        doc.Close()
+        
+else:
+    st.warning("Complete your request")
+            
