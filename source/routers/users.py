@@ -21,8 +21,8 @@ def read_users(item: request_model):
         user_query = resp_json["user_query"]
         file_content = resp_json["file_content"]
     
-        user_prompt = user_prompt(user_query, file_content)
-        mistral_analysis = call_mistral_agent(user_prompt)
+        user_prompt_query = user_prompt(user_query, file_content)
+        mistral_analysis = call_mistral_agent(user_prompt_query)
                 
         return mistral_analysis
     
