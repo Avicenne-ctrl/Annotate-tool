@@ -34,16 +34,16 @@ if st.button("Start processing"):
         
         file_content = extract_structured_spire_content(doc)
         
-        try:
-            payload = {
-                "user_query": user_query,
-                "file_content": file_content,
-            }
-        
-            print(f"[App] send payload: {payload} and file {file_content[:10]}")
-        
-            resp = requests.post(configuration.backend_url, 
-                                 json=payload, 
-                                 timeout=600,
-                                 )
-       
+        payload = {
+            "user_query": user_query,
+            "file_content": file_content,
+        }
+    
+        print(f"[App] send payload: {payload} and file {file_content[:10]}")
+    
+        resp = requests.post(configuration.backend_url, 
+                                json=payload, 
+                                timeout=600,
+                                )
+        print(f"[APP] API response: {resp.json()}")
+   
